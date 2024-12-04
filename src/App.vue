@@ -1,16 +1,19 @@
 <template>
   <Hats/>
+  <Tovars/>
   <Navigation/>
 </template>
 
 <script>
     import Hats from './assets/components/hats.vue'
     import Navigation from './assets/components/navigation.vue'
+    import Tovars from './assets/components/tovars.vue'
 
     export default {
         components: {
             Hats,
-            Navigation
+            Navigation,
+            Tovars,
         },
 
         data() {

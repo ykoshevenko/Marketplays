@@ -1,6 +1,10 @@
 <template>
-    <div class="MenuObject">
-        <p>fishText</p>
+    <div className="NavigativeMenu">
+      <div class="MenuObject">
+        <button>Корзина</button>
+        <button>Пользователь</button>
+        <button>Просмотр товара</button>
+      </div>
     </div>
 </template>
   
@@ -10,12 +14,18 @@
   
 <style scoped>
       .MenuObject {
-        margin-top: 50em;
         text-align: center;
         color: white;
-        width: 100px;
-        height: 30px;
+        max-width: 1910px;
+        height: 75px;
         background-color: rgb(24, 24, 26);
-        position: fixed;
+
+      }
+
+      .NavigativeMenu {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 50px;
       }
 </style>

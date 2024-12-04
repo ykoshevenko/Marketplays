@@ -15,6 +15,7 @@
         height: 75px;
         background-color: rgb(64, 182, 129);
         color: white;
+        margin-bottom: 50px;
     }
 
     h1 {
