@@ -1,7 +1,7 @@
 <template>
   <div className="Hats_Object">
     <h1>NeWaldberris</h1>
-    <input type="text"/>
+    <input placeholder="Какой товар вас интересует?" type="text"/>
   </div>
 </template>
 
@@ -15,7 +15,6 @@
         height: 75px;
         background-color: rgb(64, 182, 129);
         color: white;
-        margin-bottom: 50px;
     }
 
     h1 {
