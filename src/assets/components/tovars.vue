@@ -10,6 +10,14 @@
 </template>
   
 <script>
+    export default {
+        props: {
+            korzina: {
+                type: Boolean,
+                required: true,
+            }
+        },
+    }
   
 </script>
   
