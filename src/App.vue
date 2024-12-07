@@ -1,36 +1,36 @@
 <template>
   <Hats/>
-  <Navigation/>
-  <Tovars/>
+  <Navigation :KorzinaBtn="KorzinaBtn"/>
+  <Tovars v-if="!korzina" :korzina="korzina"/>
+  <Korzina v-else/>
 </template>
 
 <script>
     import Hats from './assets/components/hats.vue'
     import Navigation from './assets/components/navigation.vue'
     import Tovars from './assets/components/tovars.vue'
+    import Korzina from './assets/components/korzina.vue'
 
     export default {
         components: {
             Hats,
             Navigation,
             Tovars,
+            Korzina
         },
 
         data() {
             return {
                 korzina: false,
-                home: true,
-                user: false
+                tovars: true,
             }
         },
 
-        components: {
-            watchModuleCorzina() {
+        methods: {
+            KorzinaBtn() {
                 this.korzina = !this.korzina
-                if(this.home || this.user === true) {
-                    this.home == !this.home
-                    this.user == !this.user
-                }
+                console.log(this.korzina)
+                console.log(this.tovars)
             }
         }
     }
