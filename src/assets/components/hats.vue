@@ -1,7 +1,7 @@
 <template>
   <div className="Hats_Object">
     <h1>NeWaldberris</h1>
-    <input placeholder="Какой товар вас интересует?" type="text"/>
+    <input type="text"/>
   </div>
 </template>
 

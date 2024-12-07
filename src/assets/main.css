@@ -8,11 +8,3 @@ body {
     background-color: rgb(64, 64, 64);
     font-family: "Montserrat", sans-serif;
 }
-
-.watch {
-    opacity: 1;
-}
-
-.anwatch {
-    opacity: 0;
-}

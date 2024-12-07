@@ -13,24 +13,12 @@
         components: {
             Hats,
             Navigation,
-            Tovars,
+            Tovars
         },
 
         data() {
             return {
-                korzina: false,
-                home: true,
-                user: false
-            }
-        },
 
-        components: {
-            watchModuleCorzina() {
-                this.korzina = !this.korzina
-                if(this.home || this.user === true) {
-                    this.home == !this.home
-                    this.user == !this.user
-                }
             }
         }
     }
