@@ -2,7 +2,7 @@
   <Hats/>
   <Navigation :KorzinaBtn="KorzinaBtn"/>
   <Tovars v-if="!korzina" :korzina="korzina"/>
-  <Korzina v-else/>
+  <Korzina v-if="korzina"/>
 </template>
 
 <script>
