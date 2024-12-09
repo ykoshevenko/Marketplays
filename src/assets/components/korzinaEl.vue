@@ -1,6 +1,6 @@
 <template>
-    <div v-if="post in korzinaMasEl" :key="post.id">
-        <h1>{{ post.title }}</h1>
+    <div id="el">
+        <p>{{korzinaMasEl}}</p>
     </div>
 </template>
   
@@ -9,16 +9,15 @@
 
     export default {
         props: {
-            korzinaMasEl: {
-                type: Object,
-                requires: true
-            }
+        
         },
+
+        el: '#app',
 
         data() {
             return {
                 korzinaMasEl: [],
-                post: ''
+                post: '',
             }
         },
 

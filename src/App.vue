@@ -1,8 +1,9 @@
 <template>
   <Hats/>
-  <Navigation :KorzinaBtn="KorzinaBtn"/>
-  <Tovars v-if="!korzina" :korzina="korzina"/>
-  <Korzina v-if="korzina"/>
+  <Navigation :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
+  <Tovars v-if="!korzina && !user" :korzina="korzina"/>
+  <Korzina v-if="korzina && !user"/>
+  <User v-if="user && !korzina"/>
 </template>
 
 <script>
@@ -10,19 +11,22 @@
     import Navigation from './assets/components/navigation.vue'
     import Tovars from './assets/components/tovars.vue'
     import Korzina from './assets/components/korzina.vue'
+    import User from './assets/components/user.vue'
 
     export default {
         components: {
             Hats,
             Navigation,
             Tovars,
-            Korzina
+            Korzina,
+            User
         },
 
         data() {
             return {
                 korzina: false,
                 tovars: true,
+                user: false
             }
         },
 
@@ -31,6 +35,10 @@
                 this.korzina = !this.korzina
                 console.log(this.korzina)
                 console.log(this.tovars)
+            },
+
+            UserBtn() {
+                this.user = !this.user
             }
         }
     }
