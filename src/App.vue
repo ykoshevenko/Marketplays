@@ -1,6 +1,6 @@
 <template>
   <Hats/>
-  <Navigation :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
+  <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
   <Tovars v-if="!korzina && !user" :korzina="korzina"/>
   <Korzina v-if="korzina && !user"/>
   <User v-if="user && !korzina"/>
@@ -39,6 +39,11 @@
 
             UserBtn() {
                 this.user = !this.user
+            },
+
+            TovarsBtn() {
+                this.user = !this.user
+                this.korzina = !this.korzina
             }
         }
     }
