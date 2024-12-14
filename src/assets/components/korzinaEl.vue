@@ -1,6 +1,6 @@
 <template>
-    <div id="el">
-        <p>{{korzinaMasEl}}</p>
+    <div v-for="korzine in korzina" id="korzine.id">
+        {{ korzine.title }}
     </div>
 </template>
   
@@ -12,24 +12,33 @@
         
         },
 
-        el: '#app',
-
         data() {
             return {
-                korzinaMasEl: [],
-                post: '',
+                korzina: [],
+                data: null
             }
         },
 
-        mounted() {
-            axios.get('https://jsonplaceholder.typicode.com/photos')
+       methods: {
+            async DataMake() {
+                try {
+                    const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
+                    this.korzina = response.data.map(korzina => ({
+                        id: korzina.id,
+                        title: korzina.title,
+                    }));
+                } catch(error) {
+                    console.error(error)
+                }
+            }
+       },
 
-            .then(response => {
-                this.korzinaMasEl = response.data
-                console.log(response.data)
-            })
-        }
+       mounted() {
+            this.DataMake()
+       }
     }
+
+    // https://jsonplaceholder.typicode.com/photos
   
 </script>
   
