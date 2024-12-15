@@ -1,16 +1,9 @@
 <template>
-    <!-- <div className="test_tovars">
-        <div className="test_tovar"></div>
-        <div className="test_tovar"></div>
-        <div className="test_tovar"></div>
-        <div className="test_tovar"></div>
-        <div className="test_tovar"></div>
-        <div className="test_tovar"></div>
-    </div> -->
     <h1>Главная страница</h1>
     <div className="test_tovars">
         <div className="test_tovar" v-for="tovar in tovares" id="tovar.id">
             {{ tovar.title }}
+            <button :class="{ButtonClass: button_cl}" @click="BtnClassFunc" id="tovar.id">В корзину</button>
         </div>
     </div>
 </template>
@@ -23,12 +16,17 @@
             korzina: {
                 type: Boolean,
                 required: true,
+            },
+
+            BtnClassFunc: {
+                type: Function,
+                required: true
             }
         },
 
         data() {
             return {
-                tovares: []
+                tovares: [],
             }
         },
 
@@ -44,7 +42,7 @@
                 } catch(error) {
                     console.error(error)
                 }
-            }
+            },
        },
 
        mounted() {
@@ -58,7 +56,7 @@
     .test_tovars {
         display: grid;
         grid-template-rows: auto;
-        grid-template-columns: 200px 200px 200px 200px;
+        grid-template-columns: 200px 200px 200px;
         justify-content: center;
         gap: 50px;
     }
@@ -68,12 +66,28 @@
         width: 200px;
         height: 200px;
         text-align: center;
-        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        text-align: center;
+        padding: 25px 20px;
     }
 
     h1 {
         text-align: center;
         margin-bottom: 25px;
+    }
+
+    button {
+        background-color: rgb(64, 182, 129);
+        color: white;
+        border: 0;
+        width: 200px;
+        height: 30px;
+    }
+
+    .ButtonClass {
+        background-color: aqua;
     }
 
 </style>
