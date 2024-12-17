@@ -1,5 +1,5 @@
 <template>
-    <div v-for="korzine in korzina" id="korzine.id">
+    <div className="KorzineEl" v-for="korzine in korzina" id="korzine.id">
         {{ korzine.title }}
     </div>
 </template>
@@ -15,7 +15,7 @@
         data() {
             return {
                 korzina: [],
-                data: null
+                data: null,
             }
         },
 
@@ -27,9 +27,15 @@
                         id: korzina.id,
                         title: korzina.title,
                     }));
+
+                    console.log(this.korzina)
                 } catch(error) {
                     console.error(error)
                 }
+            },
+
+            BtnClassFunc() {
+                this.button_cl = !this.button_cl
             }
        },
 
@@ -43,5 +49,10 @@
 </script>
   
 <style scoped>
-    
+    .KorzineEl {
+        width: 40em;
+        height: 5em;
+        background-color: rgb(44, 44, 45);
+        margin-bottom: 10px;
+    }
 </style>

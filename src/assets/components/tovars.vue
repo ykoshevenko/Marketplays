@@ -18,8 +18,8 @@
                 required: true,
             },
 
-            BtnClassFunc: {
-                type: Function,
+            korzina_sum: {
+                type: Number,
                 required: true
             }
         },
@@ -27,7 +27,18 @@
         data() {
             return {
                 tovares: [],
+                button_cl: false,
+                local_korzina_sum: this.korzina_sum,
             }
+        },
+
+        watch: {
+            korzina_sum(newVal) {
+                if(newVal !== this.local_korzina_sum) {
+                this.local_korzina_sum = newVal
+                this.korzina_sum = this.local_korzina_sum
+                }
+            },
         },
 
         methods: {
@@ -43,6 +54,19 @@
                     console.error(error)
                 }
             },
+
+            BtnClassFunc() {
+                this.button_cl = !this.button_cl
+
+                if(this.button_cl == true) {
+                    this.local_korzina_sum++
+                    console.log(this.local_korzina_sum)
+                    
+                } else {
+                    this.local_korzina_sum--
+                    console.log(this.local_korzina_sum)
+                }
+            }
        },
 
        mounted() {

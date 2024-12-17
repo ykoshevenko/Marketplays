@@ -1,6 +1,10 @@
 <template>
-    <h1>Ваша Корзина</h1>
-    <korzinaEl/>
+    <div className="all_korzina">
+        <h1>Ваша Корзина</h1>
+        <div className="korziza_all-el">
+            <korzinaEl/>
+        </div>
+    </div>
 </template>
   
 <script>
@@ -18,8 +22,9 @@
 </script>
   
 <style scoped>
-    h1 {
+    .all_korzina {
         text-align: center;
     }
+
 </style>
   
