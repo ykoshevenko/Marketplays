@@ -1,9 +1,9 @@
 <template>
   <Hats/>
   <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
-  <Tovars :BtnClassFunc="BtnClassFunc" v-if="!korzina && !user" :korzina="korzina"/>
+  <Tovars :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
   <Korzina v-if="korzina && !user"/>
-  <User :BtnClassFunc="BtnClassFunc" v-if="user && !korzina"/>
+  <User :korzina_sum="korzina_sum" v-if="user && !korzina"/>
 </template>
 
 <script>
@@ -27,8 +27,7 @@
                 korzina: false,
                 tovars: true,
                 user: false,
-                korzina_sum: null,
-                button_cl: false,
+                korzina_sum: 0,
             }
         },
 
@@ -41,20 +40,13 @@
 
             UserBtn() {
                 this.user = !this.user
+                console.log(this.korzina_sum)
             },
 
             TovarsBtn() {
                 this.user = !this.user
                 this.korzina = !this.korzina
             },
-
-            BtnClassFunc() {
-                this.button_cl = !this.button_cl
-
-                if(this.button_cl == true) {
-                    this.korzina_sum++
-                }
-            }
         }
     }
 </script>
