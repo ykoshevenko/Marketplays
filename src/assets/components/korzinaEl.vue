@@ -1,6 +1,8 @@
 <template>
     <div className="KorzineEl" v-for="korzine in korzina" id="korzine.id">
         {{ korzine.title }}
+        <button className="bye_funk_btn">Заказать</button>
+        <button className="cancel_funk_btn">Удалить из казины</button>
     </div>
 </template>
   
@@ -51,8 +53,30 @@
 <style scoped>
     .KorzineEl {
         width: 40em;
-        height: 5em;
+        height: 6em;
         background-color: rgb(44, 44, 45);
-        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-bottom: 20px;
     }
+
+    button {
+        align-self: center;
+        margin-bottom: 10px;
+        color: white;
+        border: 0;
+        width: 200px;
+        height: 30px;
+    }
+
+    .bye_funk_btn {
+        background-color: rgb(64, 182, 129);
+        margin-top: 10px;
+    }
+
+    .cancel_funk_btn {
+        background-color: rgb(234, 63, 97);
+    }
+
 </style>
