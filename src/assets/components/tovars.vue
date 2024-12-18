@@ -3,7 +3,7 @@
     <div className="test_tovars">
         <div className="test_tovar" v-for="tovar in tovares" id="tovar.id">
             {{ tovar.title }}
-            <button :class="{ButtonClass: button_cl}" @click="BtnClassFunc" id="tovar.id">В корзину</button>
+            <button :class="{ButtonClass: button_cl}" @click="BtnClassFunc(tovar)" id="tovar.id">В корзину</button>
         </div>
     </div>
 </template>
@@ -55,8 +55,10 @@
                 }
             },
 
-            BtnClassFunc() {
-                this.button_cl = !this.button_cl
+            BtnClassFunc(tovar) {
+                // this.button_cl = !this.button_cl
+
+                console.log(tovar.id)
 
                 if(this.button_cl == true) {
                     this.local_korzina_sum++
