@@ -2,7 +2,7 @@
     <div className="all_korzina">
         <div className="korziza_all-el">
             <h1>Ваша корзина</h1>
-            <korzinaEl/>
+            <korzinaEl :korzina_tovar="korzina_tovar"/>
         </div>
     </div>
 </template>
@@ -16,7 +16,10 @@
        },
 
        props: {
-           
+            korzina_tovar: {
+                type: Array,
+                required: true
+            }
        }
     }
 </script>

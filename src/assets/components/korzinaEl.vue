@@ -1,5 +1,5 @@
 <template>
-    <div className="KorzineEl" v-for="korzine in korzina" id="korzine.id">
+    <div className="KorzineEl" v-for="korzine in korzina_tovar" id="korzine.id">
         {{ korzine.title }}
         <button className="bye_funk_btn">Заказать</button>
         <button className="cancel_funk_btn">Удалить из казины</button>
@@ -11,30 +11,33 @@
 
     export default {
         props: {
-        
+            korzina_tovar: {
+                type: Array,
+                required: true
+            }
         },
 
         data() {
             return {
-                korzina: [],
+                korzina: this.korzina_tovar,
                 data: null,
             }
         },
 
        methods: {
-            async DataMake() {
-                try {
-                    const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
-                    this.korzina = response.data.map(korzina => ({
-                        id: korzina.id,
-                        title: korzina.title,
-                    }));
+            // async DataMake() {
+            //     try {
+            //         const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
+            //         this.korzina = response.data.map(korzina => ({
+            //             id: korzina.id,
+            //             title: korzina.title,
+            //         }));
 
-                    console.log(this.korzina)
-                } catch(error) {
-                    console.error(error)
-                }
-            },
+            //         console.log(this.korzina)
+            //     } catch(error) {
+            //         console.error(error)
+            //     }
+            // },
 
             BtnClassFunc() {
                 this.button_cl = !this.button_cl
@@ -42,8 +45,17 @@
        },
 
        mounted() {
-            this.DataMake()
-       }
+            // this.DataMake()
+       },
+
+    //    watch: {
+    //         korzina_tovar(newVal) {
+    //             if(newVal !== this.korzina) {
+    //             this.korzina = newVal
+    //             this.korzina_tovar = this.korzina
+    //             }
+    //         },
+    //     },
     }
 
     // https://jsonplaceholder.typicode.com/photos
