@@ -21,6 +21,11 @@
             korzina_sum: {
                 type: Number,
                 required: true
+            },
+
+            korzina_tovar: {
+                type: Array,
+                required: true
             }
         },
 
@@ -56,9 +61,9 @@
             },
 
             BtnClassFunc(tovar) {
-                // this.button_cl = !this.button_cl
-
-                console.log(tovar.id)
+                this.button_cl = !this.button_cl
+                this.korzina_tovar.push(tovar)
+                console.log(this.korzina_tovar)
 
                 if(this.button_cl == true) {
                     this.local_korzina_sum++
