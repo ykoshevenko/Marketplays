@@ -3,7 +3,7 @@
   <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
   <Tovars  :korzina_tovar="korzina_tovar" :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
   <Korzina :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
-  <User :korzina_sum="korzina_sum" v-if="user && !korzina"/>
+  <User :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
 </template>
 
 <script>
@@ -27,7 +27,6 @@
                 korzina: false,
                 tovars: true,
                 user: false,
-                korzina_sum: 0,
                 korzina_tovar: []
             }
         },
@@ -41,7 +40,6 @@
 
             UserBtn() {
                 this.user = !this.user
-                console.log(this.korzina_sum)
             },
 
             TovarsBtn() {

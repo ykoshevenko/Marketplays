@@ -18,11 +18,6 @@
                 required: true,
             },
 
-            korzina_sum: {
-                type: Number,
-                required: true
-            },
-
             korzina_tovar: {
                 type: Array,
                 required: true
@@ -33,18 +28,9 @@
             return {
                 tovares: [],
                 button_cl: false,
-                local_korzina_sum: this.korzina_sum,
             }
         },
 
-        watch: {
-            korzina_sum(newVal) {
-                if(newVal !== this.local_korzina_sum) {
-                this.local_korzina_sum = newVal
-                this.korzina_sum = this.local_korzina_sum
-                }
-            },
-        },
 
         methods: {
             async DataMake() {
@@ -61,24 +47,18 @@
             },
 
             BtnClassFunc(tovar) {
+                
+
                 this.button_cl = !this.button_cl
                 this.korzina_tovar.push(tovar)
                 console.log(this.korzina_tovar)
-
-                if(this.button_cl == true) {
-                    this.local_korzina_sum++
-                    console.log(this.local_korzina_sum)
-                    
-                } else {
-                    this.local_korzina_sum--
-                    console.log(this.local_korzina_sum)
-                }
             }
        },
 
        mounted() {
             this.DataMake()
-       }
+       },
+
     }
   
 </script>
