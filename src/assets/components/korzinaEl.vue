@@ -1,13 +1,14 @@
 <template>
-    <div className="KorzineEl" v-for="korzine in korzina_tovar" id="korzine.id">
+    <div v-if="korzina_tovar != 0" className="KorzineEl" v-for="korzine in korzina_tovar" id="korzine.id">
         {{ korzine.title }}
         <button className="bye_funk_btn">Заказать</button>
-        <button className="cancel_funk_btn">Удалить из казины</button>
+        <button @click="DeleteTovars(korzine)" className="cancel_funk_btn">Удалить из казины</button>
     </div>
+
+    <h1 className="ZeroTovar" v-else>Товары отсудсвтуют</h1>
 </template>
   
 <script>
-    import axios from 'axios';
 
     export default {
         props: {
@@ -24,38 +25,12 @@
             }
         },
 
-       methods: {
-            // async DataMake() {
-            //     try {
-            //         const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
-            //         this.korzina = response.data.map(korzina => ({
-            //             id: korzina.id,
-            //             title: korzina.title,
-            //         }));
-
-            //         console.log(this.korzina)
-            //     } catch(error) {
-            //         console.error(error)
-            //     }
-            // },
-
-            BtnClassFunc() {
-                this.button_cl = !this.button_cl
+        methods: {
+            DeleteTovars(tovar) {
+                this.korzina_tovar.splice(tovar, 1)
             }
-       },
-
-       mounted() {
-            // this.DataMake()
-       },
-
-    //    watch: {
-    //         korzina_tovar(newVal) {
-    //             if(newVal !== this.korzina) {
-    //             this.korzina = newVal
-    //             this.korzina_tovar = this.korzina
-    //             }
-    //         },
-    //     },
+        }
+            
     }
 
     // https://jsonplaceholder.typicode.com/photos
@@ -89,6 +64,13 @@
 
     .cancel_funk_btn {
         background-color: rgb(234, 63, 97);
+    }
+
+    .ZeroTovar {
+        background-color: rgb(44, 44, 45);
+        width: 20em;
+        height: 3em;
+        margin-bottom: 20px;
     }
 
 </style>

@@ -4,47 +4,24 @@
         <h2>Имя: Name Famil Otchestvo</h2>
         <h2>Возраст: Number</h2>
         <h2>Колличество заказов: ...</h2>
-        <h2>Товаров в карзине: {{ local_korzina_sum }}</h2>
+        <h2>Товаров в карзине: {{ korzina_tovar.length || 0 }}</h2>
     </div>
 </template>
   
 <script>
       export default {
         props: {
-            korzina_sum: {
-                type: Number,
+            korzina_tovar: {
+                type: Array,
                 required: true
             }
         },
 
         data() {
             return {
-                local_korzina_sum: this.korzina_sum
+                
             }
         },
-
-        watch: {
-            korzina_sum(newVal) {
-                if(newVal !== this.local_korzina_sum) {
-                this.local_korzina_sum = newVal
-                }
-            },
-        },
-
-        methods: {
-            BtnClassFunc() {
-                this.button_cl = !this.button_cl
-
-                if(this.button_cl == true) {
-                    this.local_korzina_sum++
-                    console.log(this.local_korzina_sum)
-                    
-                } else {
-                    this.local_korzina_sum--
-                    console.log(this.local_korzina_sum)
-                }
-            }
-        }
       }
 </script>
   
