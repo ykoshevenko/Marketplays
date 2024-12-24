@@ -1,14 +1,17 @@
 <template>
     <div v-if="korzina_tovar != 0" className="KorzineEl" v-for="korzine in korzina_tovar" id="korzine.id">
         {{ korzine.title }}
-        <button className="bye_funk_btn">Заказать</button>
+        <button @click="OpenModal()" className="bye_funk_btn">Заказать</button>
         <button @click="DeleteTovars(korzine)" className="cancel_funk_btn">Удалить из казины</button>
     </div>
 
-    <h1 className="ZeroTovar" v-else>Товары отсудсвтуют</h1>
+    <h1 className="ZeroTovar" v-if="korzina_tovar == 0">Товары отсудсвтуют</h1>
+
+    <Modal :CloseModal="CloseModal" v-show="watch == true"/>
 </template>
   
 <script>
+    import Modal from './modal.vue';
 
     export default {
         props: {
@@ -18,16 +21,31 @@
             }
         },
 
+        components: {
+            Modal
+        },
+
         data() {
             return {
                 korzina: this.korzina_tovar,
                 data: null,
+                watch: false,
             }
         },
 
         methods: {
             DeleteTovars(tovar) {
                 this.korzina_tovar.splice(tovar, 1)
+            },
+            
+            OpenModal() {
+                this.watch = !this.watch
+                console.log(this.watch)
+            },
+
+            CloseModal() {
+                this.watch = false
+                console.log(this.watch)
             }
         }
             
@@ -71,6 +89,34 @@
         width: 20em;
         height: 3em;
         margin-bottom: 20px;
+    }
+
+    .ModalStyle-bg {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 99998;
+        background-color: rgba(0, 0, 0, .3);
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: opasity .4, visibility .4s;
+    }
+
+    .ModalStyle {
+        position: relative;
+        max-width: 500px;
+        padding: 45px;
+        z-index: 1;
+        background-color: white;
+        box-shadow: 0px 0px 77px 61px rgba(34, 60, 80, 0.2);
+        transform: scale(0);
+        transition: transform .8s;
+        text-align: center;
     }
 
 </style>

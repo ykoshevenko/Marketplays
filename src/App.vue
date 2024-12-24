@@ -4,6 +4,7 @@
   <Tovars  :korzina_tovar="korzina_tovar" :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
   <Korzina :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
   <User :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
+  
 </template>
 
 <script>
@@ -12,6 +13,7 @@
     import Tovars from './assets/components/tovars.vue'
     import Korzina from './assets/components/korzina.vue'
     import User from './assets/components/user.vue'
+    import Modal from './assets/components/modal.vue'
 
     export default {
         components: {
@@ -19,7 +21,8 @@
             Navigation,
             Tovars,
             Korzina,
-            User
+            User,
+            Modal
         },
 
         data() {
@@ -46,6 +49,7 @@
                 this.user = !this.user
                 this.korzina = !this.korzina
             },
+
         }
     }
 </script>
