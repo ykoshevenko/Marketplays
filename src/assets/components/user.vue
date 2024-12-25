@@ -6,9 +6,13 @@
         <h2>Колличество заказов: {{ buyTovars.length || 0 }}</h2>
         <h2>Товаров в карзине: {{ korzina_tovar.length || 0 }}</h2>
     </div>
+
+    <Buys :buyTovars="buyTovars"/>
 </template>
   
 <script>
+    import Buys from './buys.vue';
+
       export default {
         props: {
             korzina_tovar: {
@@ -20,6 +24,10 @@
                 type: Array,
                 required: true
             }
+        },
+
+        components: {
+            Buys,
         },
 
         data() {
@@ -42,5 +50,6 @@
         height: auto;
         margin-top: 2em;
         line-height: 1.5;
+        margin-bottom: 3em;
     }
 </style>

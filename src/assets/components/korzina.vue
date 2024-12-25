@@ -2,7 +2,7 @@
     <div className="all_korzina">
         <div className="korziza_all-el">
             <h1>Ваша корзина</h1>
-            <korzinaEl :buyTovars="buyTovars" :korzina_tovar="korzina_tovar"/>
+            <korzinaEl :btn="btn" :title="title" :buyTovars="buyTovars" :korzina_tovar="korzina_tovar"/>
         </div>
     </div>
 </template>
@@ -24,7 +24,17 @@
             buyTovars: {
                 type: Array,
                 required: true
-            }
+            },
+
+            title: {
+                type: String,
+                required: true
+            },
+
+            btn: {
+                type: String,
+                required: true
+            },
        }
     }
 </script>

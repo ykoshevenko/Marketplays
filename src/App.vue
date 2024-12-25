@@ -2,7 +2,7 @@
   <Hats/>
   <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
   <Tovars :korzina_tovar="korzina_tovar" :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
-  <Korzina :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
+  <Korzina :btn="btn" :title="title" :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
   <User :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
 </template>
 
@@ -31,6 +31,8 @@
                 user: false,
                 korzina_tovar: [],
                 buyTovars: [],
+                title: 'Заказ оформлен',
+                btn: 'Спасибо за покупку'
             }
         },
 
