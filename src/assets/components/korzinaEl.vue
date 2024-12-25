@@ -7,7 +7,7 @@
 
     <h1 className="ZeroTovar" v-if="korzina_tovar == 0">Товары отсудсвтуют</h1>
 
-    <Modal :CloseModal="CloseModal" v-show="watch == true"/>
+    <Modal :btn="btn" :title="title" :CloseModal="CloseModal" v-show="watch == true"/>
 </template>
   
 <script>
@@ -23,7 +23,17 @@
             buyTovars: {
                 type: Array,
                 required: true
-            }
+            },
+
+            title: {
+                type: String,
+                required: true
+            },
+
+            btn: {
+                type: String,
+                required: true
+            },
         },
 
         components: {

@@ -1,10 +1,12 @@
 <template>
-    <div className="Modal-back">
-        <div className="Modal">
-            <h1>Заказ оформлен</h1>
-            <button @click="CloseModal()" className="close">Спасибо за покупку</button>
+    <transition >
+        <div className="Modal-back">
+            <div className="Modal">
+                <h1>{{ title }}</h1>
+                <button @click="CloseModal()" className="close">{{btn}}</button>
+            </div>
         </div>
-    </div>
+    </transition>
 </template>
   
 <script>
@@ -14,7 +16,17 @@
                 type: Function,
                 required: true,
             },
-          }
+
+            title: {
+                type: String,
+                required: true
+            },
+
+            btn: {
+                type: String,
+                required: true
+            },
+          },
     }
 
 </script>
@@ -40,6 +52,8 @@
         flex-direction: column;
         width: 25em;
         height: 25em;
+        animation-name: ModalAnimation;
+        animation-duration: 1s;
     }
 
     .close {
@@ -58,4 +72,20 @@
         margin-left: 4em;
         margin-top: 2em;
     }
+
+    @keyframes ModalAnimation {
+        0% {
+            transform: scale(0.1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    
 </style>
