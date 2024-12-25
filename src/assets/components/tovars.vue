@@ -3,7 +3,7 @@
     <div className="test_tovars">
         <div className="test_tovar" v-for="tovar in tovares" id="tovar.id">
             {{ tovar.title }}
-            <button :class="{ButtonClass: button_cl}" @click="BtnClassFunc(tovar)" id="tovar.id">В корзину</button>
+            <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
         </div>
     </div>
 </template>
@@ -27,7 +27,8 @@
         data() {
             return {
                 tovares: [],
-                button_cl: false,
+                activeId: null,
+                btnContent: 'В корзину'
             }
         },
 
@@ -47,11 +48,19 @@
             },
 
             BtnClassFunc(tovar) {
-                
+                this.activeId = tovar.id
 
                 this.button_cl = !this.button_cl
                 this.korzina_tovar.push(tovar)
+                this.btnContent = 'В корзине'
                 console.log(this.korzina_tovar)
+            },
+
+            btnActive(tovar) {
+                if (tovar.id === this.activeId) {
+                return { backgroundColor: 'rgb(69, 70, 79)' };
+                }
+                return {};
             }
        },
 

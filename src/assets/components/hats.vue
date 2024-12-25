@@ -25,8 +25,9 @@
     input {
         float: right;
         width: 30%;
-        height: 30%;
+        height: 50%;
         margin-top: -35px;
         margin-right: 10em;
+        font-size: 130%;
     }
 </style>

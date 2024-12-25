@@ -1,7 +1,7 @@
 <template>
     <div v-if="korzina_tovar != 0" className="KorzineEl" v-for="korzine in korzina_tovar" id="korzine.id">
         {{ korzine.title }}
-        <button @click="OpenModal()" className="bye_funk_btn">Заказать</button>
+        <button @click="OpenModal(korzine)" className="bye_funk_btn">Заказать</button>
         <button @click="DeleteTovars(korzine)" className="cancel_funk_btn">Удалить из казины</button>
     </div>
 
@@ -18,6 +18,11 @@
             korzina_tovar: {
                 type: Array,
                 required: true
+            },
+
+            buyTovars: {
+                type: Array,
+                required: true
             }
         },
 
@@ -27,7 +32,6 @@
 
         data() {
             return {
-                korzina: this.korzina_tovar,
                 data: null,
                 watch: false,
             }
@@ -38,9 +42,11 @@
                 this.korzina_tovar.splice(tovar, 1)
             },
             
-            OpenModal() {
+            OpenModal(tovar) {
                 this.watch = !this.watch
-                console.log(this.watch)
+                this.korzina_tovar.splice(tovar, 1)
+                this.buyTovars.push(tovar)
+                console.log(tovar)
             },
 
             CloseModal() {
