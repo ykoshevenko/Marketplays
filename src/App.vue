@@ -1,10 +1,9 @@
 <template>
   <Hats/>
   <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
-  <Tovars  :korzina_tovar="korzina_tovar" :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
-  <Korzina :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
-  <User :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
-  
+  <Tovars :korzina_tovar="korzina_tovar" :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
+  <Korzina :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
+  <User :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
 </template>
 
 <script>
@@ -30,7 +29,8 @@
                 korzina: false,
                 tovars: true,
                 user: false,
-                korzina_tovar: []
+                korzina_tovar: [],
+                buyTovars: [],
             }
         },
 

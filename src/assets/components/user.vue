@@ -3,7 +3,7 @@
     <div className="info">
         <h2>Имя: Name Famil Otchestvo</h2>
         <h2>Возраст: Number</h2>
-        <h2>Колличество заказов: ...</h2>
+        <h2>Колличество заказов: {{ buyTovars.length || 0 }}</h2>
         <h2>Товаров в карзине: {{ korzina_tovar.length || 0 }}</h2>
     </div>
 </template>
@@ -12,6 +12,11 @@
       export default {
         props: {
             korzina_tovar: {
+                type: Array,
+                required: true
+            },
+
+            buyTovars: {
                 type: Array,
                 required: true
             }
