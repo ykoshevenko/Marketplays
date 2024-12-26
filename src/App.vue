@@ -3,7 +3,7 @@
   <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
   <Tovars :korzina_tovar="korzina_tovar" :korzina_sum="korzina_sum" v-if="!korzina && !user" :korzina="korzina"/>
   <Korzina :btn="btn" :title="title" :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
-  <User :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
+  <User :btn="btn" :title="title" :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
 </template>
 
 <script>

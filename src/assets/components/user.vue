@@ -7,7 +7,7 @@
         <h2>Товаров в карзине: {{ korzina_tovar.length || 0 }}</h2>
     </div>
 
-    <Buys :buyTovars="buyTovars"/>
+    <Buys :btn="btn" :title="title" :buyTovars="buyTovars"/>
 </template>
   
 <script>
@@ -23,7 +23,17 @@
             buyTovars: {
                 type: Array,
                 required: true
-            }
+            },
+
+            title: {
+                type: String,
+                required: true
+            },
+
+            btn: {
+                type: String,
+                required: true
+            },
         },
 
         components: {

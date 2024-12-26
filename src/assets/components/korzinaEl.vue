@@ -57,6 +57,8 @@
                 this.korzina_tovar.splice(tovar, 1)
                 this.buyTovars.push(tovar)
                 console.log(tovar)
+                this.title == 'Заказ оформлен'
+                this.btn == 'Спасибо за покупку'
             },
 
             CloseModal() {

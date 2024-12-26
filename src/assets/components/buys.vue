@@ -3,25 +3,58 @@
     <div className="test_tovars">
         <div className="test_tovar" v-for="tovar in buyTovars" id="tovar.id">
             {{ tovar.title }}
-            <button>Отменить заказ</button>
+            <button @click="OpenModal(tovar)">Отменить заказ</button>
         </div>
     </div>
+
+    <Modal :btn="btn" :title="title" :CloseModal="CloseModal" v-show="watch == true"/>
 </template>
   
 <script>
+    import Modal from './modal.vue';
+
       export default {
         props: {
             buyTovars: {
                 type: Array,
                 required: true
-            }
+            },
+
+            title: {
+                type: String,
+                required: true
+            },
+
+            btn: {
+                type: String,
+                required: true
+            },
+        },
+
+        components: {
+            Modal
         },
 
         data() {
             return {
-                
+                watch: false,
             }
         },
+
+        methods: {
+            OpenModal(tovar) {
+                this.watch = !this.watch
+                this.buyTovars.splice(tovar, 1)
+                console.log(tovar)
+                this.title = 'Заказ отменен'
+                this.btn = 'Мы заботамся о вас'
+            },
+
+            CloseModal() {
+                this.watch = false
+                console.log(this.watch)
+            }
+        }
       }
 </script>
   
