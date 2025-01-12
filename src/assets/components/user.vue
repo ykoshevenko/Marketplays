@@ -1,8 +1,8 @@
 <template>
-    <h1 className="title">Добро пожаловать, Name</h1>
+    <h1 className="title">Добро пожаловать, Егор</h1>
     <div className="info">
-        <h2>Имя: Name Famil Otchestvo</h2>
-        <h2>Возраст: Number</h2>
+        <h2>Имя: Кошевенко Егор Сергеевич</h2>
+        <h2>Возраст: 15</h2>
         <h2>Колличество заказов: {{ buyTovars.length || 0 }}</h2>
         <h2>Товаров в карзине: {{ korzina_tovar.length || 0 }}</h2>
     </div>
