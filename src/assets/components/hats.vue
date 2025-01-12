@@ -1,12 +1,53 @@
 <template>
   <div className="Hats_Object">
-    <h1>NeWaldberris</h1>
-    <input type="text"/>
+    <h1>Интернет Магазин</h1>
+    <input v-model="searchQuery" @input="Search" type="text"/>
+    <button @click="filteredUsers">найти</button>
   </div>
 </template>
 
 <script>
+    export default {
+      props: {
+        Search: {
+          type: Function,
+          required: true
+        },
 
+        tovare: {
+          type: Array,
+          required: true
+        },
+
+        btnContent: {
+          type: Array,
+          required: true,
+        }
+      },
+
+      date() {
+        return {
+          searchQuery: ''
+        }
+      },
+
+      computed: {
+        
+      },
+
+      methods: {
+        Search(tovar) {
+           console.log(this.searchQuery) 
+        },
+
+        filteredUsers() {
+          const results = this.tovare.filter(user => user.title.includes(this.searchQuery));
+      
+          // Вывод результатов в консоль
+          console.log('Результаты поиска:', results);
+        }
+      }
+    }
 </script>
 
 <style scoped>

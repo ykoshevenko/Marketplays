@@ -6,10 +6,14 @@
             <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
         </div>
     </div>
+
+    <Modal v-show="watch == true" :CloseModal="CloseModal"/>
 </template>
   
 <script>
     import axios from 'axios';
+    import hats from './hats.vue';
+    import Modal from './modal.vue';
 
     export default {
         props: {
@@ -21,14 +25,23 @@
             korzina_tovar: {
                 type: Array,
                 required: true
-            }
+            },
+
+            tovare: Array
+        },
+
+        components: {
+            hats,
+            Modal
         },
 
         data() {
             return {
-                tovares: [],
+                tovares: [...this.tovare],
                 activeId: null,
-                btnContent: 'В корзину'
+                btnContent: 'В корзину',
+                hatsActive: false,
+                watch: true,
             }
         },
 
@@ -61,11 +74,17 @@
                 return { backgroundColor: 'rgb(69, 70, 79)' };
                 }
                 return {};
+            },
+
+            CloseModal() {
+                this.watch = false
+                this.$emit('array-castom', this.tovares)
+                console.log(this.tovares)
             }
        },
 
-       mounted() {
-            this.DataMake()
+       mounted() {    
+        this.DataMake()
        },
 
     }
