@@ -1,9 +1,21 @@
 <template>
-    <h1>Главная страница</h1>
-    <div className="test_tovars">
-        <div className="test_tovar" v-for="tovar in tovares" id="tovar.id">
-            {{ tovar.title }}
-            <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
+    <div v-if="searchTovar.length == 0">
+        <h1>Главная страница</h1>
+        <div className="test_tovars">
+            <div className="test_tovar" v-for="tovar in tovares" id="tovar.id">
+                {{ tovar.title }}
+                <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="searchTovar.length > 0">
+        <h1>По вашему запросу найдено:</h1>
+        <div className="test_tovars">
+            <div className="test_tovar" v-for="tovar in searchTovar" id="tovar.id">
+                {{ tovar.title }}
+                <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
+            </div>
         </div>
     </div>
 
@@ -22,7 +34,17 @@
                 required: true,
             },
 
+            filteredUsers: {
+                type: Function,
+                required: true
+            },
+
             korzina_tovar: {
+                type: Array,
+                required: true
+            },
+
+            searchTovar: {
                 type: Array,
                 required: true
             },
@@ -67,6 +89,7 @@
                 this.korzina_tovar.push(tovar)
                 this.btnContent = 'В корзине'
                 console.log(this.korzina_tovar)
+                console.log(this.searchTovar)
             },
 
             btnActive(tovar) {
