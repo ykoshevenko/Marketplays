@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <Modal v-show="watch == true" :CloseModal="CloseModal"/>
+    <Modal :btn="btn" :title="title" v-show="watch == true" :CloseModal="CloseModal"/>
 </template>
   
 <script>
@@ -64,6 +64,8 @@
                 btnContent: 'В корзину',
                 hatsActive: false,
                 watch: true,
+                title: 'Этот сайт не является работающим интернет магазином, поэтому не проводятся трангзации, но зайдя на сайт, вы соглашаетесь на cucky',
+                btn: 'согласен'
             }
         },
 

@@ -76,7 +76,7 @@
 <style scoped>
     .KorzineEl {
         width: 40em;
-        height: 6em;
+        height: 8em;
         background-color: rgb(44, 44, 45);
         display: flex;
         flex-direction: column;

@@ -83,7 +83,7 @@
         margin-top: -35px;
         margin-right: 10em;
         font-size: 130%;
-        background-color: rgb(44, 44, 45);
+        background-color: rgb(64, 64, 64);
         color: white;
         border: 0;
     }
@@ -91,7 +91,7 @@
     button {
       float: right;
       margin-top: -35px;
-      background-color: rgb(44, 44, 45);
+      background-color: rgb(64, 64, 64);
       color: white;
       border: 0;
     }
