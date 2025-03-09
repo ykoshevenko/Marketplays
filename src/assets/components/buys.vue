@@ -2,7 +2,10 @@
     <h1>Лист ожиданий</h1>
     <div className="test_tovars">
         <div className="test_tovar" v-for="tovar in buyTovars" id="tovar.id">
-            {{ tovar.title }}
+                <img :src='tovar.image'></img>
+                {{ tovar.title }}
+                <br>
+                <h3>{{ tovar.price }}$</h3>
             <button @click="OpenModal(tovar)">Отменить заказ</button>
         </div>
     </div>
@@ -38,6 +41,8 @@
         data() {
             return {
                 watch: false,
+                title: 'Заказ отменен',
+                btn: 'Мы заботамся о вас'
             }
         },
 
@@ -46,8 +51,6 @@
                 this.watch = !this.watch
                 this.buyTovars.splice(tovar, 1)
                 console.log(tovar)
-                this.title = 'Заказ отменен'
-                this.btn = 'Мы заботамся о вас'
             },
 
             CloseModal() {
@@ -75,7 +78,7 @@
     .test_tovar {
         background-color: rgb(44, 44, 45);
         width: 200px;
-        height: 200px;
+        height: 400px;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -92,6 +95,15 @@
         width: 200px;
         height: 30px;
         background-color: rgb(64, 182, 129)
+    }
+
+    img{
+        width: 200px;
+        height: 200px
+    }
+
+    h3 {
+        color: rgb(150, 220, 96);
     }
 
 </style>

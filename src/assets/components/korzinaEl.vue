@@ -1,6 +1,7 @@
 <template>
     <div v-if="korzina_tovar != 0" className="KorzineEl" v-for="korzine in korzina_tovar" id="korzine.id">
         {{ korzine.title }}
+        <h3>{{ korzine.price }}$</h3>
         <button @click="OpenModal(korzine)" className="bye_funk_btn">Заказать</button>
         <button @click="DeleteTovars(korzine)" className="cancel_funk_btn">Удалить из казины</button>
     </div>
@@ -76,7 +77,7 @@
 <style scoped>
     .KorzineEl {
         width: 40em;
-        height: 8em;
+        height: 13em;
         background-color: rgb(44, 44, 45);
         display: flex;
         flex-direction: column;
@@ -135,6 +136,10 @@
         transform: scale(0);
         transition: transform .8s;
         text-align: center;
+    }
+
+    h3 {
+        color: rgb(150, 220, 96);
     }
 
 </style>
