@@ -1,7 +1,7 @@
 <template>
   <Hats :searchTovar="searchTovar" :tovare="tovare"/>
   <Navigation :TovarsBtn="TovarsBtn" :KorzinaBtn="KorzinaBtn" :UserBtn="UserBtn"/>
-  <Tovars :searchTovar="searchTovar" :tovare="tovare" @array-castom="UpdateArray" :korzina_tovar="korzina_tovar" v-if="!korzina && !user" :korzina="korzina"/>
+  <Tovars :searchTovar="searchTovar" :tovare="tovare" @array-castom="UpdateArray" :korzina_tovar="korzina_tovar" :flatArray='flatArray' v-if="!korzina && !user" :korzina="korzina"/>
   <Korzina :btn="btn" :title="title" :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="korzina && !user"/>
   <User :btn="btn" :title="title" :buyTovars="buyTovars" :korzina_tovar="korzina_tovar" v-if="user && !korzina"/>
 </template>

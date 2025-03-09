@@ -4,7 +4,7 @@
         <h2>Имя: Кошевенко Егор Сергеевич</h2>
         <h2>Возраст: 15</h2>
         <h2>Колличество заказов: {{ buyTovars.length || 0 }}</h2>
-        <h2>Товаров в карзине: {{ korzina_tovar.length || 0 }}</h2>
+        <h2>Товаров в корзине: {{ korzina_tovar.length || 0 }}</h2>
     </div>
 
     <Buys :btn="btn" :title="title" :buyTovars="buyTovars"/>

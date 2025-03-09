@@ -2,8 +2,11 @@
     <div v-if="searchTovar.length == 0">
         <h1>Главная страница</h1>
         <div className="test_tovars">
-            <div className="test_tovar" v-for="tovar in tovares" id="tovar.id">
+            <div className="test_tovar" v-for="tovar in flatArray" id="tovar.id">
+                <img :src='tovar.image'></img>
                 {{ tovar.title }}
+                <br>
+                <h3>{{ tovar.price }}$</h3>
                 <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
             </div>
         </div>
@@ -13,7 +16,10 @@
         <h1>По вашему запросу найдено:</h1>
         <div className="test_tovars">
             <div className="test_tovar" v-for="tovar in searchTovar" id="tovar.id">
+                <img :src='tovar.image'></img>
                 {{ tovar.title }}
+                <br>
+                <h3>{{ tovar.price }}$</h3>
                 <button :style="btnActive(tovar)" @click="BtnClassFunc(tovar)" id="tovar.id">{{ btnContent }}</button>
             </div>
         </div>
@@ -65,24 +71,37 @@
                 hatsActive: false,
                 watch: true,
                 title: 'Этот сайт не является работающим интернет магазином, поэтому не проводятся трангзации, но зайдя на сайт, вы соглашаетесь на cucky',
-                btn: 'согласен'
+                btn: 'согласен',
+                tovars: [],
+                flatArray: [],
             }
         },
 
 
         methods: {
-            async DataMake() {
+
+            async fetchData() {
                 try {
-                    const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
-                    this.tovares = response.data.map(tovar => ({
+                    const response = await axios.get('https://fakestoreapi.in/api/products');
+                    
+                    // Объединяем объекты в массив
+                    this.tovars = Object.values(response.data);
+                    this.tovars.splice(0,2)
+                    this.tovars.flat()
+                    this.flatArray = this.tovars.flat() 
+
+                    flatArray.map(tovar => ({
                         id: tovar.id,
                         title: tovar.title,
-                        url: tovar.url
-                    }));
-                } catch(error) {
-                    console.error(error)
+                        image: tovar.image,
+                        price: tovar.price
+                    }))
+
+                    console.log(this.tovars)
+                } catch (error) {
+                    console.error(error);
                 }
-            },
+                },
 
             BtnClassFunc(tovar) {
                 this.activeId = tovar.id
@@ -103,13 +122,14 @@
 
             CloseModal() {
                 this.watch = false
-                this.$emit('array-castom', this.tovares)
+                this.$emit('array-castom', this.flatArray)
                 console.log(this.tovares)
             }
        },
 
        mounted() {    
-        this.DataMake()
+
+        this.fetchData()
        },
 
     }
@@ -125,10 +145,19 @@
         gap: 50px;
     }
 
+    img{
+        width: 200px;
+        height: 200px
+    }
+
+    h3 {
+        color: rgb(150, 220, 96);
+    }
+
     .test_tovar {
         background-color: rgb(44, 44, 45);
         width: 200px;
-        height: 200px;
+        height: 400px;
         text-align: center;
         display: flex;
         flex-direction: column;
