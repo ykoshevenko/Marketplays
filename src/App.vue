@@ -15,6 +15,8 @@
     import Modal from './assets/components/modal.vue'
 
     export default {
+        name: 'App',
+
         components: {
             Hats,
             Navigation,
