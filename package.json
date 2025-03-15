@@ -13,6 +13,7 @@
         "axios": "^1.7.9",
         "cors": "^2.8.5",
         "firebase": "^9.23.0",
+        "pug-loader": "^2.4.0",
         "vue": "^3.5.13",
         "vuefire": "^3.0.0-alpha.9"
     },
