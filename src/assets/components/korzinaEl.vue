@@ -6,7 +6,7 @@
         <button @click="DeleteTovars(korzine)" className="cancel_funk_btn">Удалить из казины</button>
     </div>
 
-    <h1 className="ZeroTovar" v-if="korzina_tovar == 0">Товары отсудсвтуют</h1>
+    <h1 className="ZeroTovar" v-if="korzina_tovar == 0">Товары отсутствуют</h1>
 
     <Modal :btn="btn" :title="title" :CloseModal="CloseModal" v-show="watch == true"/>
 </template>
