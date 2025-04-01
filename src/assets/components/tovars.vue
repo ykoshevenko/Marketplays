@@ -25,6 +25,10 @@
         </div>
     </div>
 
+    <div v-if='flatArray.length == 0'>
+        <h1>Товаров не найдено</h1>
+    </div>
+
     <Modal :btn="btn" :title="title" v-show="watch == true" :CloseModal="CloseModal"/>
 </template>
   
@@ -82,9 +86,11 @@
 
             async fetchData() {
                 try {
-                    const response = await axios.get('https://fakestoreapi.in/api/products');
+                    const response = await axios.get('https://fakestoreapi.com/products');
+                    // https://fakestoreapi.in/api/products
+                    // https://fakestoreapi.com/products
                     
-                    // Объединяем объекты в массив
+                    //Объединяем объекты в массив
                     this.tovars = Object.values(response.data);
                     this.tovars.splice(0,2)
                     this.tovars.flat()
